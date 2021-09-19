@@ -1,0 +1,35 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "Plan to re-create the classic game battleship using TDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/invisibleopey/battleship.git"
+  },
+  "keywords": [
+    "battleship",
+    "tdd"
+  ],
+  "author": "Muritala Abdullahi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/invisibleopey/battleship/issues"
+  },
+  "homepage": "https://github.com/invisibleopey/battleship#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "jest": "^27.2.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
+  }
+}
