@@ -19,3 +19,9 @@ test('tests the returned isSunk method with false', () => {
   let carrier = ship('carrier', 5);
   expect(carrier.isSunk()).toBe(false);
 });
+
+test('tests the returned hit method', () => {
+  let carrier = ship('carrier', 5);
+  carrier.hit(2);
+  expect(carrier.hits[2]).toBe('X');
+});
