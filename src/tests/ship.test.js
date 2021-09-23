@@ -1,16 +1,21 @@
 import { ship } from '../scripts/ship';
 
-test('return ship object length', () => {
+test('tests the returned get name method', () => {
+  let carrier = ship('carrier', 4);
+  expect(carrier.name).toBe('carrier');
+});
+
+test('tests the returned get length method', () => {
   let carrier = ship('carrier', 5);
   expect(carrier.length).toBe(5);
 });
 
-test('return ship object name', () => {
+test('tests the returned get hits method', () => {
   let carrier = ship('carrier', 5);
-  expect(carrier.name).toBe('carrier');
+  expect(carrier.hits).toStrictEqual([]);
 });
 
-test('return ship object isSunk function', () => {
+test('tests the returned isSunk method with false', () => {
   let carrier = ship('carrier', 5);
   expect(carrier.isSunk()).toBe(false);
 });
