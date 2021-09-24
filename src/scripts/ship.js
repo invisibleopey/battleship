@@ -1,7 +1,5 @@
 const ship = function ship(name, length) {
-  const emptyCell = { name: null, hit: false };
-  let cells = new Array(length).fill(Object.create(emptyCell));
-  let hits = [];
+  let hits = new Array(length).fill('');
   return {
     get name() {
       return name;
@@ -12,7 +10,15 @@ const ship = function ship(name, length) {
     get hits() {
       return [...hits];
     },
-    isSunk: () => cells.every((cell) => cell.hit),
+    isSunk: () => {
+      for (let i = 0; i < hits.length; i += 1) {
+        if (hits[i] !== 'X') {
+          return false;
+        } else {
+          return true;
+        }
+      }
+    },
     hit: (target) => {
       if (target < length) {
         hits[target] = 'X';
@@ -24,5 +30,4 @@ const ship = function ship(name, length) {
 };
 
 const destroyer = ship('destroyer', 3);
-console.log(destroyer);
 export { ship };
