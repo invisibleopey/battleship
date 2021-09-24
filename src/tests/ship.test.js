@@ -35,3 +35,5 @@ test('tests the returned hit method', () => {
   carrier.hit(2);
   expect(carrier.hits[2]).toBe('X');
 });
+
+test.todo('test the returned object of ship factory function');
