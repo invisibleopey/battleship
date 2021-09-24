@@ -29,5 +29,4 @@ const ship = function ship(name, length) {
   };
 };
 
-const destroyer = ship('destroyer', 3);
 export { ship };
