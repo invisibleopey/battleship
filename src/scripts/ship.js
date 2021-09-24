@@ -13,7 +13,13 @@ const ship = function ship(name, length) {
       return [...hits];
     },
     isSunk: () => cells.every((cell) => cell.hit),
-    hit: (target) => (hits[target] = 'X'),
+    hit: (target) => {
+      if (target < length) {
+        hits[target] = 'X';
+      } else {
+        throw 'Out of range';
+      }
+    },
   };
 };
 
