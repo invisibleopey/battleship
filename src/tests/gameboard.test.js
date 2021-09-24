@@ -1,11 +1,20 @@
 import { Gameboard } from '../scripts/gameboard';
+import { ship } from '../scripts/ship';
 
-test('test the width of the board', () => {
-  const gameboard = Gameboard();
-  expect(gameboard.board.length).toBe(10);
-});
+describe('Gameboard tests', () => {
+  let gameboard;
+  let carrier;
 
-test('test the height of the board', () => {
-  const gameboard = Gameboard();
-  expect(gameboard.board[0].length).toBe(10);
+  beforeEach(() => {
+    gameboard = Gameboard();
+    carrier = ship('carrier', 5);
+  });
+
+  test('test the width of the board', () => {
+    expect(gameboard.board.length).toBe(10);
+  });
+
+  test('test the height of the board', () => {
+    expect(gameboard.board[0].length).toBe(10);
+  });
 });
