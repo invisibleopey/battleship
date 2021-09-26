@@ -117,6 +117,7 @@ const Gameboard = () => {
     placeShip,
     placeShipsRandomly,
     getEmptyFieldsAmount,
+    isPlacementPossible,
   };
 };
 
