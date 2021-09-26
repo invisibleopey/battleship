@@ -5,14 +5,7 @@ const Gameboard = () => {
   const width = 10;
   const height = 10;
   let board = new Array(width).fill(null).map((x) => new Array(height).fill(null));
-  // Initialize the 5 ships that will be required
-  const ships = [
-    ship('Carrier', 5),
-    ship('Battleship', 4),
-    ship('Destroyer', 3),
-    ship('Submarine', 3),
-    ship('Patrol Boat', 2),
-  ];
+
   // Place ships
   const placeShip = function placeShip(ship, row, column, isVertical) {
     if (!isPlacementPossible(ship, row, column, isVertical)) return false;
@@ -75,9 +68,23 @@ const Gameboard = () => {
     }
     return true;
   }
+
+  function getEmptyFieldsAmount() {
+    let total = 0;
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        if (board[i][j] === null) total++;
+      }
+    }
+    return total;
+  }
+
+  // The interface functions and properties to be returned
   return {
     board,
     placeShip,
+    placeShipsRandomly,
+    getEmptyFieldsAmount,
   };
 };
 

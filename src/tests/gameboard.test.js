@@ -44,4 +44,9 @@ describe('Gameboard tests', () => {
     fakeBoard[5][1] = carrier.name;
     expect(gameboard.board).toEqual(fakeBoard);
   });
+
+  test('place 5 ships randomly', () => {
+    gameboard.placeShipsRandomly();
+    expect(gameboard.getEmptyFieldsAmount()).toBe(83);
+  });
 });
