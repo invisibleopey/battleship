@@ -39,11 +39,11 @@ describe('Gameboard tests', () => {
 
   test('place ship', () => {
     gameboard.placeShip(carrier, 1, 1, true);
-    fakeBoard[1][1] = carrier.name;
-    fakeBoard[2][1] = carrier.name;
-    fakeBoard[3][1] = carrier.name;
-    fakeBoard[4][1] = carrier.name;
-    fakeBoard[5][1] = carrier.name;
+    fakeBoard[1][1] = carrier;
+    fakeBoard[2][1] = carrier;
+    fakeBoard[3][1] = carrier;
+    fakeBoard[4][1] = carrier;
+    fakeBoard[5][1] = carrier;
     expect(gameboard.board).toEqual(fakeBoard);
   });
 
@@ -73,11 +73,23 @@ describe('Gameboard tests', () => {
   });
 
   test('test receive attack on unoccupied field', () => {
-    expect(gameboard.receiveAttack(gameboard.board[1][1])).toBe(false);
+    expect(gameboard.receiveAttack(2, 1)).toBe(false);
   });
 
   test('test receive attack on an occupied field', () => {
     gameboard.placeShip(carrier, 1, 1, true);
-    expect(gameboard.receiveAttack(gameboard.board[1][1])).toBe(true);
+    expect(gameboard.receiveAttack(2, 1)).toBe(true);
+  });
+
+  test('test the side effect of receive attack function', () => {
+    gameboard.placeShip(carrier, 1, 1, true);
+    gameboard.receiveAttack(2, 1);
+    expect(gameboard.board[2][1].hits.includes(1)).toBe(true);
+  });
+
+  test('keep track of missed shots', () => {
+    gameboard.placeShip(carrier, 1, 1, true);
+    gameboard.receiveAttack(1, 4);
+    expect(gameboard.missedShots[1][4]).toBe(true);
   });
 });
