@@ -16,7 +16,7 @@ describe('Test ship factory', () => {
   });
 
   test('tests the returned get hits method', () => {
-    expect(carrier.hits).toStrictEqual(['', '', '', '', '']);
+    expect(carrier.hits).toStrictEqual([]);
   });
 
   test('tests the returned isSunk method with false', () => {
@@ -34,7 +34,7 @@ describe('Test ship factory', () => {
 
   test('tests the returned hit method', () => {
     carrier.hit(2);
-    expect(carrier.hits[2]).toBe('X');
+    expect(carrier.hits).toEqual([2]);
   });
 
   test.todo('test the returned object of ship factory function');
