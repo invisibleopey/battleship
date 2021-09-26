@@ -30,6 +30,49 @@ const Gameboard = () => {
   };
 
   function isPlacementPossible(ship, row, column, isVertical) {
+    // Is it out of the gameboard
+    if (row < 0 || row > height - 1 || column < 0 || column > width - 1) return false;
+
+    // If ship doesn't fit in gameboard
+    if (isVertical) {
+      if (row + ship.length > 10) return false;
+    } else {
+      if (column + ship.length > 10) return false;
+    }
+
+    // Are any of the fields already taken
+    if (isVertical) {
+      for (let i = 0; i < ship.length; i++) {
+        if (board[row + i][column]) return false;
+      }
+    } else {
+      for (let i = 0; i < ship.length; i++) {
+        if (board[row][column + i]) return false;
+      }
+    }
+
+    // Are any of the neighbour fields already taken
+    if (isVertical) {
+      for (let i = 0; i < ship.length; i++) {
+        for (let x = -1; x <= 1; x++) {
+          for (let y = -1; y <= 1; y++) {
+            if (row + x + i < 0 || row + x + i >= 10 || column + y < 0 || column + y >= 10)
+              continue;
+            if (board[row + x + i][column + y]) return false;
+          }
+        }
+      }
+    } else {
+      for (let i = 0; i < ship.length; i++) {
+        for (let x = -1; x <= 1; x++) {
+          for (let y = -1; y <= 1; y++) {
+            if (row + x < 0 || row + x >= 10 || column + y + i < 0 || column + y + i >= 10)
+              continue;
+            if (board[row + x][column + y + i]) return false;
+          }
+        }
+      }
+    }
     return true;
   }
   return {
