@@ -22,6 +22,29 @@ const Gameboard = () => {
     return true;
   };
 
+  // Randomly place ships
+  const placeShipsRandomly = function placeShipsRandomly() {
+    if (!isEmpty()) return;
+
+    const ships = [];
+    const carrier = new ship('carrier', 5);
+    const battleship = new ship('battleship', 4);
+    const destroyer = new ship('destroyer', 3);
+    const submarine = new ship('submarine', 3);
+    const patrolBoat = new ship('patrolBoat', 2);
+    ships.push(carrier, battleship, destroyer, submarine, patrolBoat);
+
+    let succesfulPlacements = 0;
+
+    while (succesfulPlacements < 5) {
+      const row = Math.floor(Math.random() * 10);
+      const column = Math.floor(Math.random() * 10);
+      const isVertical = Math.floor(Math.random() * 2) === 1 ? true : false;
+
+      if (placeShip(ships[succesfulPlacements], row, column, isVertical)) succesfulPlacements++;
+    }
+  };
+
   function isPlacementPossible(ship, row, column, isVertical) {
     // Is it out of the gameboard
     if (row < 0 || row > height - 1 || column < 0 || column > width - 1) return false;
@@ -64,6 +87,15 @@ const Gameboard = () => {
             if (board[row + x][column + y + i]) return false;
           }
         }
+      }
+    }
+    return true;
+  }
+
+  function isEmpty() {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        if (board[i][j] !== null) return false;
       }
     }
     return true;
