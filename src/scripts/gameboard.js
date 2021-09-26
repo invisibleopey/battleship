@@ -144,6 +144,21 @@ const Gameboard = () => {
     }
   };
 
+  function isGameOver() {
+    let areShipsOnBoard = false;
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        if (board[i][j]) {
+          areShipsOnBoard = true;
+          if (!board[i][j].isSunk()) {
+            return false;
+          }
+        }
+      }
+    }
+    return areShipsOnBoard ? true : false;
+  }
+
   // The interface functions and properties to be returned
   return {
     board,
@@ -153,6 +168,7 @@ const Gameboard = () => {
     isPlacementPossible,
     receiveAttack,
     missedShots,
+    isGameOver,
   };
 };
 
