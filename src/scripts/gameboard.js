@@ -22,17 +22,18 @@ const Gameboard = () => {
     return true;
   };
 
+  // Initialize the ships that will be needed
+  const ships = [];
+  const carrier = new ship('carrier', 5);
+  const battleship = new ship('battleship', 4);
+  const destroyer = new ship('destroyer', 3);
+  const submarine = new ship('submarine', 3);
+  const patrolBoat = new ship('patrolBoat', 2);
+  ships.push(carrier, battleship, destroyer, submarine, patrolBoat);
+
   // Randomly place ships
   const placeShipsRandomly = function placeShipsRandomly() {
     if (!isEmpty()) return;
-
-    const ships = [];
-    const carrier = new ship('carrier', 5);
-    const battleship = new ship('battleship', 4);
-    const destroyer = new ship('destroyer', 3);
-    const submarine = new ship('submarine', 3);
-    const patrolBoat = new ship('patrolBoat', 2);
-    ships.push(carrier, battleship, destroyer, submarine, patrolBoat);
 
     let succesfulPlacements = 0;
 
