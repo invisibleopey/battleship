@@ -14,9 +14,27 @@ const Gameboard = () => {
     ship('Patrol Boat', 2),
   ];
   // Place ships
+  const placeShip = function placeShip(ship, row, column, isVertical) {
+    if (!isPlacementPossible(ship, row, column, isVertical)) return false;
 
+    if (isVertical) {
+      for (let i = 0; i < ship.length; i++) {
+        board[row + i][column] = ship.name;
+      }
+    } else {
+      for (let i = 0; i < ship.length; i++) {
+        board[row][column + i] = ship.name;
+      }
+    }
+    return true;
+  };
+
+  function isPlacementPossible(ship, row, column, isVertical) {
+    return true;
+  }
   return {
     board,
+    placeShip,
   };
 };
 
