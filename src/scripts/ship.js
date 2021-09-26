@@ -1,5 +1,5 @@
 const ship = function ship(name, length) {
-  let hits = new Array(length).fill('');
+  let hits = [];
   return {
     get name() {
       return name;
@@ -11,20 +11,12 @@ const ship = function ship(name, length) {
       return [...hits];
     },
     isSunk: () => {
-      for (let i = 0; i < hits.length; i += 1) {
-        if (hits[i] !== 'X') {
-          return false;
-        } else {
-          return true;
-        }
-      }
+      if (hits.length === length) return true;
+      return false;
     },
     hit: (target) => {
-      if (target < length) {
-        hits[target] = 'X';
-      } else {
-        throw 'Out of range';
-      }
+      if (hits.includes(target) || target < 0 || target >= length) return;
+      hits.push(target);
     },
   };
 };
