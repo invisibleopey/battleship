@@ -5,6 +5,7 @@ const Gameboard = () => {
   const width = 10;
   const height = 10;
   let board = new Array(width).fill(null).map((x) => new Array(height).fill(null));
+  let missedShots = new Array(width).fill(false).map((x) => new Array(height).fill(false));
 
   // Place ships
   const placeShip = function placeShip(ship, row, column, isVertical) {
@@ -12,11 +13,11 @@ const Gameboard = () => {
 
     if (isVertical) {
       for (let i = 0; i < ship.length; i++) {
-        board[row + i][column] = ship.name;
+        board[row + i][column] = ship;
       }
     } else {
       for (let i = 0; i < ship.length; i++) {
-        board[row][column + i] = ship.name;
+        board[row][column + i] = ship;
       }
     }
     return true;
@@ -112,11 +113,34 @@ const Gameboard = () => {
     return total;
   }
 
-  const receiveAttack = function receiveAttack(target) {
-    if (!target) {
+  const receiveAttack = function receiveAttack(row, column) {
+    if (row < 0 || row >= 10 || column < 0 || column >= 10) {
       return false;
-    } else {
+    }
+
+    if (board[row][column]) {
+      let hitIndex = 0;
+      // If ship is vertical
+      if (column > 0 && board[row][column - 1]) {
+        let i = 1;
+        while (column - i >= 0 && board[row][column - i]) {
+          hitIndex++;
+          i++;
+        }
+      }
+      // If ship is horizontal
+      else if (row > 0 && board[row - 1][column]) {
+        let i = 1;
+        while (row - i >= 0 && board[row - i][column]) {
+          hitIndex++;
+          i++;
+        }
+      }
+      board[row][column].hit(hitIndex);
       return true;
+    } else {
+      missedShots[row][column] = true;
+      return false;
     }
   };
 
@@ -128,6 +152,7 @@ const Gameboard = () => {
     getEmptyFieldsAmount,
     isPlacementPossible,
     receiveAttack,
+    missedShots,
   };
 };
 
