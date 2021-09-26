@@ -112,6 +112,14 @@ const Gameboard = () => {
     return total;
   }
 
+  const receiveAttack = function receiveAttack(target) {
+    if (!target) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   // The interface functions and properties to be returned
   return {
     board,
@@ -119,6 +127,7 @@ const Gameboard = () => {
     placeShipsRandomly,
     getEmptyFieldsAmount,
     isPlacementPossible,
+    receiveAttack,
   };
 };
 

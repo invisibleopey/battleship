@@ -71,4 +71,13 @@ describe('Gameboard tests', () => {
     expect(gameboard.isPlacementPossible(destroyer, 4, 2, true)).toBe(false);
     expect(gameboard.isPlacementPossible(destroyer, 5, 2, true)).toBe(true);
   });
+
+  test('test receive attack on unoccupied field', () => {
+    expect(gameboard.receiveAttack(gameboard.board[1][1])).toBe(false);
+  });
+
+  test('test receive attack on an occupied field', () => {
+    gameboard.placeShip(carrier, 1, 1, true);
+    expect(gameboard.receiveAttack(gameboard.board[1][1])).toBe(true);
+  });
 });
