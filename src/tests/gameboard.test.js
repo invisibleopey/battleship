@@ -92,4 +92,22 @@ describe('Gameboard tests', () => {
     gameboard.receiveAttack(1, 4);
     expect(gameboard.missedShots[1][4]).toBe(true);
   });
+
+  test('tell if game is over', () => {
+    expect(gameboard.isGameOver()).toBe(false);
+
+    gameboard.placeShip(carrier, 1, 1, true);
+    expect(gameboard.isGameOver()).toBe(false);
+    gameboard.receiveAttack(1, 1);
+    gameboard.receiveAttack(2, 1);
+    gameboard.receiveAttack(3, 1);
+    gameboard.receiveAttack(4, 1);
+    gameboard.receiveAttack(5, 1);
+
+    gameboard.placeShip(new ship('destroyer', 3), 5, 5, false);
+    gameboard.receiveAttack(5, 5);
+    gameboard.receiveAttack(5, 6);
+    gameboard.receiveAttack(5, 7);
+    expect(gameboard.isGameOver()).toBe(true);
+  });
 });
