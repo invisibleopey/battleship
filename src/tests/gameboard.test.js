@@ -30,7 +30,18 @@ describe('Gameboard tests', () => {
   test('test the height of the board', () => {
     expect(gameboard.board[0].length).toBe(10);
   });
+
   test('the board initialization', () => {
+    expect(gameboard.board).toEqual(fakeBoard);
+  });
+
+  test('place ship', () => {
+    gameboard.placeShip(carrier, 1, 1, true);
+    fakeBoard[1][1] = carrier.name;
+    fakeBoard[2][1] = carrier.name;
+    fakeBoard[3][1] = carrier.name;
+    fakeBoard[4][1] = carrier.name;
+    fakeBoard[5][1] = carrier.name;
     expect(gameboard.board).toEqual(fakeBoard);
   });
 });
