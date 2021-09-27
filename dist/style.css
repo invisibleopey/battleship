@@ -11,3 +11,10 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   min-height: 100vh;
 }
+header {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}
