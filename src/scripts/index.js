@@ -24,6 +24,7 @@ function gameLoop(e) {
     } else {
       e.target.classList.add('hit');
     }
+    checkWinner();
     computerAttack();
   }
 }
@@ -42,7 +43,15 @@ function computerAttack() {
       targetCell.classList.add('hit');
     }
     compAttackIndex++;
+    checkWinner();
   }
 }
 
+function checkWinner() {
+  if (player1Gameboard.isGameOver()) {
+    console.log('The Computer Won');
+  } else if (computerGameboard.isGameOver()) {
+    console.log('You won!');
+  }
+}
 export { gameLoop };
