@@ -1,4 +1,4 @@
-import { attackCell } from './index';
+import { gameLoop } from './index';
 
 function renderGameboard(gameboard, owner) {
   let container;
@@ -20,6 +20,6 @@ function renderGameboard(gameboard, owner) {
 }
 
 const computerBoard = document.querySelector('.computer-board');
-computerBoard.addEventListener('click', attackCell);
+computerBoard.addEventListener('click', gameLoop);
 
 export { renderGameboard };
