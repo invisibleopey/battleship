@@ -19,7 +19,20 @@ function renderGameboard(gameboard, owner) {
   }
 }
 
+function renderUserShips(gameboard) {
+  for (let i = 0; i < gameboard.board.length; i++) {
+    for (let j = 0; j < gameboard.board[i].length; j++) {
+      if (gameboard.board[i][j]) {
+        let currentCell = document.querySelector(
+          ".user-board div[data-x-index='" + i + "']" + "[data-y-index='" + j + "']",
+        );
+        currentCell.classList.add('userShips');
+      }
+    }
+  }
+}
+
 const computerBoard = document.querySelector('.computer-board');
 computerBoard.addEventListener('click', gameLoop);
 
-export { renderGameboard };
+export { renderGameboard, renderUserShips };
