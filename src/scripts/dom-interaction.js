@@ -1,3 +1,5 @@
+import { attackCell } from './index';
+
 function renderGameboard(gameboard, owner) {
   let container;
   if (owner === 'player1') {
@@ -16,5 +18,8 @@ function renderGameboard(gameboard, owner) {
     }
   }
 }
+
+const computerBoard = document.querySelector('.computer-board');
+computerBoard.addEventListener('click', attackCell);
 
 export { renderGameboard };

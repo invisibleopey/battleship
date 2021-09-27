@@ -11,3 +11,12 @@ player1Gameboard.placeShipsRandomly();
 computerGameboard.placeShipsRandomly();
 renderGameboard(player1Gameboard, 'player1');
 renderGameboard(computerGameboard, 'computer');
+
+function attackCell(e) {
+  if (e.target.className !== 'cells') return;
+  let row = e.path[0].dataset.xIndex;
+  let column = e.path[0].dataset.yIndex;
+  player1.attack(row, column, computerGameboard);
+}
+
+export { attackCell };
