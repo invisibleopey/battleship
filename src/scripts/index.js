@@ -17,6 +17,11 @@ function attackCell(e) {
   let row = e.path[0].dataset.xIndex;
   let column = e.path[0].dataset.yIndex;
   player1.attack(row, column, computerGameboard);
+  if (computerGameboard.missedShots[row][column]) {
+    e.target.classList.add('miss');
+  } else {
+    e.target.classList.add('hit');
+  }
 }
 
 export { attackCell };
