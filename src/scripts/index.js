@@ -49,9 +49,9 @@ function computerAttack() {
 
 function checkWinner() {
   if (player1Gameboard.isGameOver()) {
-    console.log('The Computer Won');
+    document.querySelector('.messages').textContent = 'The Computer Won';
   } else if (computerGameboard.isGameOver()) {
-    console.log('You won!');
+    document.querySelector('.messages').textContent = 'You won!';
   }
 }
 export { gameLoop };
