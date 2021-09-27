@@ -1,7 +1,7 @@
 import { ship } from './ship';
 import { Gameboard } from './gameboard';
 import { player } from './player';
-import { renderGameboard } from './dom-interaction';
+import { renderGameboard, renderUserShips } from './dom-interaction';
 
 const player1 = player('User');
 const computer = player('Computer');
@@ -11,6 +11,7 @@ player1Gameboard.placeShipsRandomly();
 computerGameboard.placeShipsRandomly();
 renderGameboard(player1Gameboard, 'player1');
 renderGameboard(computerGameboard, 'computer');
+renderUserShips(player1Gameboard);
 
 let compAttackIndex = 0;
 function gameLoop(e) {
@@ -40,6 +41,7 @@ function computerAttack() {
     if (player1Gameboard.missedShots[row][column]) {
       targetCell.classList.add('miss');
     } else {
+      targetCell.classList.remove('userShips');
       targetCell.classList.add('hit');
     }
     compAttackIndex++;
