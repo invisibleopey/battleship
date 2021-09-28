@@ -9,9 +9,8 @@ const player1Gameboard = Gameboard();
 const computerGameboard = Gameboard();
 let compAttackIndex = 0;
 
-// Random placement of ships
+// Start Game
 const startGame = function startGame() {
-  player1Gameboard.placeShipsRandomly();
   computerGameboard.placeShipsRandomly();
   renderGameboard(player1Gameboard, 'player1');
   renderGameboard(computerGameboard, 'computer');
@@ -61,9 +60,12 @@ function checkWinner() {
   }
 }
 
+// Place Ships
+// Random placement of ships
 const shipPlacementDiv = document.querySelector('#ship-placement');
 const randomShipsBtn = document.querySelector('#randomShipsBtn');
 randomShipsBtn.addEventListener('click', () => {
+  player1Gameboard.placeShipsRandomly();
   startGame();
   shipPlacementDiv.style.display = 'none';
 });
@@ -140,11 +142,8 @@ manualShipsBtn.addEventListener('click', () => {
     patrolBoatY,
     isPatrolBoatVertical,
   );
-  computerGameboard.placeShipsRandomly();
-  renderGameboard(player1Gameboard, 'player1');
-  renderGameboard(computerGameboard, 'computer');
-  renderUserShips(player1Gameboard);
 
+  startGame();
   document.querySelector('#ships-coords-form').reset();
   shipPlacementDiv.style.display = 'none';
   document.querySelector('.bg-modal').style.display = 'none';
