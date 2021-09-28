@@ -35,4 +35,12 @@ function renderUserShips(gameboard) {
 const computerBoard = document.querySelector('.computer-board');
 computerBoard.addEventListener('click', gameLoop);
 
+// Control Modal
+document.getElementById('enterCoordsBtn').addEventListener('click', () => {
+  document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+document.querySelector('.close').addEventListener('click', () => {
+  document.querySelector('.bg-modal').style.display = 'none';
+});
 export { renderGameboard, renderUserShips };
