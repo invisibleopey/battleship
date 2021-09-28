@@ -30,15 +30,19 @@
           <label for="carrier">Carrier </label>
           <input type="number" class="number" id="carrier-x" min="0" max="9" step="1" required />
           <input type="number" class="number" id="carrier-y" min="0" max="9" step="1" required />
+          <input type="checkbox" name="carrier-vertical" id="carrier-vertical" />
           <label for="carrier">Battleship </label>
           <input type="number" class="number" id="battleship-x" min="0" max="9" step="1" required />
           <input type="number" class="number" id="battleship-y" min="0" max="9" step="1" required />
+          <input type="checkbox" name="battleship-vertical" id="battleship-vertical" />
           <label for="carrier">Destroyer </label>
           <input type="number" class="number" id="destroyer-x" min="0" max="9" step="1" required />
           <input type="number" class="number" id="destroyer-y" min="0" max="9" step="1" required />
+          <input type="checkbox" name="destroyer-vertical" id="destroyer-vertical" />
           <label for="carrier">Sub-marine</label>
           <input type="number" class="number" id="sub-marine-x" min="0" max="9" step="1" required />
           <input type="number" class="number" id="sub-marine-y" min="0" max="9" step="1" required />
+          <input type="checkbox" name="sub-marine-vertical" id="sub-marine-vertical" />
           <label for="carrier">Patrol Boat </label>
           <input
             type="number"
@@ -58,7 +62,8 @@
             step="1"
             required
           />
-          <input type="submit" value="PLACE SHIPS" />
+          <input type="checkbox" name="patrol-boat-vertical" id="patrol-boat-vertical" />
+          <input type="submit" value="PLACE SHIPS" id="place-ships" />
         </form>
       </div>
     </div>
