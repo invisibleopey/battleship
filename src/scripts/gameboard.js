@@ -169,6 +169,7 @@ const Gameboard = () => {
     receiveAttack,
     missedShots,
     isGameOver,
+    ships,
   };
 };
 
