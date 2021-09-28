@@ -103,6 +103,11 @@ footer {
 #ship-placement button {
   margin-bottom: 0.5em;
   width: 10em;
+  font: inherit;
+  font-size: 0.9em;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 
 #ships-coords-form > * {
