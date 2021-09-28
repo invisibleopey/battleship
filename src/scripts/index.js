@@ -7,13 +7,16 @@ const player1 = player('User');
 const computer = player('Computer');
 const player1Gameboard = Gameboard();
 const computerGameboard = Gameboard();
-player1Gameboard.placeShipsRandomly();
-computerGameboard.placeShipsRandomly();
-renderGameboard(player1Gameboard, 'player1');
-renderGameboard(computerGameboard, 'computer');
-renderUserShips(player1Gameboard);
-
 let compAttackIndex = 0;
+
+const startGame = function startGame() {
+  player1Gameboard.placeShipsRandomly();
+  computerGameboard.placeShipsRandomly();
+  renderGameboard(player1Gameboard, 'player1');
+  renderGameboard(computerGameboard, 'computer');
+  renderUserShips(player1Gameboard);
+};
+
 function gameLoop(e) {
   if (e.target.className !== 'cells') return;
   if (!(player1Gameboard.isGameOver() || computerGameboard.isGameOver())) {
@@ -56,4 +59,12 @@ function checkWinner() {
     document.querySelector('.messages').textContent = 'You won!';
   }
 }
+
+const shipPlacementDiv = document.querySelector('#ship-placement');
+const randomShipsBtn = document.querySelector('#randomShipsBtn');
+randomShipsBtn.addEventListener('click', () => {
+  startGame();
+  shipPlacementDiv.style.display = 'none';
+});
+
 export { gameLoop };
