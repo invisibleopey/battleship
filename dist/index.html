@@ -10,6 +10,11 @@
   <body>
     <header><h1>BATTLESHIP</h1></header>
     <main>
+      <div id="ship-placement">
+        <span>How would you like to place your ships?</span>
+        <button id="randomShipsBtn">RANDOM</button>
+        <button id="enterCoordsBtn">ENTER COORDS</button>
+      </div>
       <div>
         <span class="messages"></span>
       </div>
@@ -18,6 +23,45 @@
         <div class="computer-board"></div>
       </div>
     </main>
+    <div class="bg-modal">
+      <div class="modal-contents">
+        <div class="close">+</div>
+        <form action="#" id="ships-coords-form">
+          <label for="carrier">Carrier </label>
+          <input type="number" class="number" id="carrier-x" min="0" max="9" step="1" required />
+          <input type="number" class="number" id="carrier-y" min="0" max="9" step="1" required />
+          <label for="carrier">Battleship </label>
+          <input type="number" class="number" id="battleship-x" min="0" max="9" step="1" required />
+          <input type="number" class="number" id="battleship-y" min="0" max="9" step="1" required />
+          <label for="carrier">Destroyer </label>
+          <input type="number" class="number" id="destroyer-x" min="0" max="9" step="1" required />
+          <input type="number" class="number" id="destroyer-y" min="0" max="9" step="1" required />
+          <label for="carrier">Sub-marine</label>
+          <input type="number" class="number" id="sub-marine-x" min="0" max="9" step="1" required />
+          <input type="number" class="number" id="sub-marine-y" min="0" max="9" step="1" required />
+          <label for="carrier">Patrol Boat </label>
+          <input
+            type="number"
+            class="number"
+            id="patrol-boat-x"
+            min="0"
+            max="9"
+            step="1"
+            required
+          />
+          <input
+            type="number"
+            class="number"
+            id="patrol-boat-y"
+            min="0"
+            max="9"
+            step="1"
+            required
+          />
+          <input type="submit" value="PLACE SHIPS" />
+        </form>
+      </div>
+    </div>
     <footer><span>Copyright © 2021 InvisibleOpey</span></footer>
     <script src="main.js"></script>
   </body>
