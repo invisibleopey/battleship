@@ -73,6 +73,14 @@ randomShipsBtn.addEventListener('click', () => {
 // Placement of ships after Capturing of Coords
 const manualShipsBtn = document.querySelector('#place-ships');
 manualShipsBtn.addEventListener('click', () => {
+  placeShipsWithCoords();
+  startGame();
+  document.querySelector('#ships-coords-form').reset();
+  shipPlacementDiv.style.display = 'none';
+  document.querySelector('.bg-modal').style.display = 'none';
+});
+
+function placeShipsWithCoords() {
   let carrierX = Number(document.querySelector('#carrier-x').value);
   let carrierY = Number(document.querySelector('#carrier-y').value);
   let isCarrierVertical;
@@ -142,10 +150,6 @@ manualShipsBtn.addEventListener('click', () => {
     patrolBoatY,
     isPatrolBoatVertical,
   );
+}
 
-  startGame();
-  document.querySelector('#ships-coords-form').reset();
-  shipPlacementDiv.style.display = 'none';
-  document.querySelector('.bg-modal').style.display = 'none';
-});
 export { gameLoop };
