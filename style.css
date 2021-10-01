@@ -9,8 +9,11 @@ body {
   color: rgba(20, 20, 20, 0.7);
   background-color: rgba(197, 193, 192, 0.6);
   font-family: 'Source Sans Pro', sans-serif;
-  min-height: 100%;
+  height: 100vh;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 main {
   flex: 1;
@@ -51,9 +54,9 @@ main {
   border-bottom: 0.5px solid rgb(34, 34, 34);
 }
 footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .miss {
   background: green;
@@ -95,10 +98,17 @@ footer {
   cursor: pointer;
 }
 
-#ship-placement > * {
-  display: block;
+#ship-placement {
   width: 50%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
 }
 #ship-placement button {
   margin-bottom: 0.5em;
